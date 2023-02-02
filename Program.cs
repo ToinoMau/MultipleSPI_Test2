@@ -12,18 +12,14 @@ namespace SpiExamples
 		public static void Main()
 		{
 			//configure SPI bus-1 HSPI
-			Configuration.SetPinFunction(14, DeviceFunction.SPI1_CLOCK);//14
-			Configuration.SetPinFunction(12, DeviceFunction.SPI1_MISO);//12
-			Configuration.SetPinFunction(13, DeviceFunction.SPI1_MOSI);//13---CS15
+			//Configuration.SetPinFunction(14, DeviceFunction.SPI1_CLOCK);//14
+			//Configuration.SetPinFunction(12, DeviceFunction.SPI1_MISO);//12
+			//Configuration.SetPinFunction(13, DeviceFunction.SPI1_MOSI);//13---CS15
 
 			//configure SPI bus-2 VSPI this one is mandatory!
 			//Configuration.SetPinFunction(18, DeviceFunction.SPI2_CLOCK);//18
 			//Configuration.SetPinFunction(19, DeviceFunction.SPI2_MISO);//19
 			//Configuration.SetPinFunction(23, DeviceFunction.SPI2_MOSI);//23---CS5
-
-			//Configuration.SetPinFunction(19, DeviceFunction.SPI1_CLOCK);//14
-			//Configuration.SetPinFunction(25, DeviceFunction.SPI1_MISO);//12
-			//Configuration.SetPinFunction(23, DeviceFunction.SPI1_MOSI);//13---CS15
 
 			//device A
 			SpiDevice spiDevice_A;
@@ -84,9 +80,9 @@ namespace SpiExamples
 			for (int i = 0; i < 1000000; i++)
 			{
 				spiDevice_A.Write(shortSpanByte);//produces the shortest Cs-pin signal
-				//NOTE: in order to receive, an wire must connect MOSI and MISO
+				//NOTE: in order to receive, a wire must connect MOSI and MISO
 				spiDevice_B.TransferFullDuplex(Sendlength8, Receivelength8);//produces the "medium" length Cs-pin signal
-				//NOTE: in order to receive, an wire must connect MOSI and MISO															
+				//NOTE: in order to receive, a wire must connect MOSI and MISO															
 				spiDevice_C.TransferFullDuplex(Sendlength16, Receivelength16);//produces the "largest" length Cs-pin signal
 																			  
 				Debug.WriteLine("running loop step= " + i.ToString());
